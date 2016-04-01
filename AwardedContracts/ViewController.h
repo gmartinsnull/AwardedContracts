@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailsViewController.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DetailsViewControllerDelegate>
 
 - (IBAction)btnFetch:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tbView;

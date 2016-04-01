@@ -13,7 +13,7 @@
 
 @end
 
-@interface DetailsViewController : ViewController
+@interface DetailsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblNum;
 @property (weak, nonatomic) IBOutlet UILabel *lblType;
 @property (weak, nonatomic) IBOutlet UITextView *txtDesc;

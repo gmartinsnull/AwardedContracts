@@ -153,4 +153,16 @@
     return cell;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSIndexPath *indexPath = [self.tbView indexPathForSelectedRow];
+    
+    DetailsViewController *dtVC = segue.destinationViewController;
+    
+    NSLog(@"%@", structuredData);
+    
+    dtVC.data = [structuredData objectAtIndex:indexPath.row];
+    dtVC.delegate = self;
+}
+
 @end

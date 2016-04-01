@@ -21,11 +21,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yfW-Iv-z4c">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="M6b-jk-uEL">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="400"/>
-                                    </constraint>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="IRj-ly-fZF">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
@@ -39,16 +34,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="M6b-jk-uEL"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="M6b-jk-uEL"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="U5R-IZ-Pj1"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="e2h-E5-eB7"/>
@@ -59,28 +44,31 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yfW-Iv-z4c" secondAttribute="trailing" id="43a-rs-jqT"/>
                             <constraint firstItem="yfW-Iv-z4c" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="9gC-OX-c1c"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yfW-Iv-z4c" secondAttribute="bottom" constant="200" id="MiM-c7-9wJ">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstItem="yfW-Iv-z4c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ez4-ed-hcq"/>
+                            <constraint firstItem="yfW-Iv-z4c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="GRo-ae-ePb"/>
+                            <constraint firstItem="yfW-Iv-z4c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P2l-T6-TDe"/>
+                            <constraint firstItem="yfW-Iv-z4c" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="inS-6N-VAX"/>
                             <constraint firstItem="yfW-Iv-z4c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mk5-e0-8Ly"/>
-                            <constraint firstItem="yfW-Iv-z4c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="ohc-e1-JGY">
-                                <variation key="heightClass=regular-widthClass=compact" constant="15"/>
-                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="yfW-Iv-z4c" secondAttribute="trailing" id="rjE-hx-66Y"/>
                             <constraint firstItem="yfW-Iv-z4c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="tbN-tK-aT5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ez4-ed-hcq"/>
-                                <exclude reference="ohc-e1-JGY"/>
-                                <exclude reference="MiM-c7-9wJ"/>
+                                <exclude reference="GRo-ae-ePb"/>
+                                <exclude reference="P2l-T6-TDe"/>
+                                <exclude reference="inS-6N-VAX"/>
+                                <exclude reference="rjE-hx-66Y"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="ez4-ed-hcq"/>
-                                <include reference="ohc-e1-JGY"/>
-                                <include reference="MiM-c7-9wJ"/>
+                                <exclude reference="43a-rs-jqT"/>
+                                <exclude reference="9gC-OX-c1c"/>
+                                <include reference="GRo-ae-ePb"/>
+                                <include reference="P2l-T6-TDe"/>
+                                <include reference="inS-6N-VAX"/>
+                                <exclude reference="mk5-e0-8Ly"/>
+                                <include reference="rjE-hx-66Y"/>
+                                <exclude reference="tbN-tK-aT5"/>
                             </mask>
                         </variation>
                     </view>
@@ -209,7 +197,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="inH-Yg-8PN">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="inH-Yg-8PN">
                                 <rect key="frame" x="228" y="194" width="352" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -222,7 +210,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Ej-bpd">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Ej-bpd">
                                 <rect key="frame" x="228" y="273" width="352" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
