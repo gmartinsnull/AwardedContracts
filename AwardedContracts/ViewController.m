@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    dispatch_queue_t mQueue;
+}
 
 @end
 
@@ -33,6 +35,15 @@
 //FETCHING THE CSV DATA FROM THE URL
 - (IBAction)btnFetch:(id)sender {
     
+    if (!mQueue)
+        mQueue = dispatch_queue_create("com.cl.csv", NULL);
+    
+    //MAKE AN ASYNC TASK
+    dispatch_async(mQueue, ^{[self fetchCSVData];});
+    
+}
+
+- (void) fetchCSVData {
     //SAVING CSV DATA INTO A STRING
     NSError *error;
     NSString *allData = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
@@ -48,11 +59,21 @@
     
     while ([auxData length] > 0) {
         auxArray = [self getElements];
-        [structuredData addObject:auxArray];
+        if (headerCounter < 5) {
+            headerCounter++;
+            continue;
+        }
+        if ([[auxArray objectAtIndex:6] isEqualToString:@"Yes"]) {
+            [structuredData addObject:auxArray];
+        }
+        
     }
     NSLog(@"%@", structuredData);
     
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tbView reloadData];
+        //NSLog(@"%@", structuredData);
+    });
 }
 
 //GETTING ELEMENT BY ELEMENT BUILDING AN ARRAY OF 7 ELEMENTS
@@ -111,6 +132,25 @@
     }
     
     return elementsArray;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [structuredData count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *identifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    
+    //CONFIGURING CELL
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    //NSLog(@"%@", indexPath);
+    
+    cell.textLabel.text = [[structuredData objectAtIndex:indexPath.row] objectAtIndex:0];
+    
+    return cell;
 }
 
 @end
