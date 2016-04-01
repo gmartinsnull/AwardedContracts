@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)btnFetch:(id)sender;
 
 @end
 

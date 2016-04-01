@@ -39,7 +39,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Awarded Contracts" id="fpj-z3-Onp">
                         <barButtonItem key="leftBarButtonItem" title="Test UI" id="soh-01-8Zy"/>
-                        <barButtonItem key="rightBarButtonItem" title="Fetch" id="Mcf-EL-0BT"/>
+                        <barButtonItem key="rightBarButtonItem" title="Fetch" id="Mcf-EL-0BT">
+                            <connections>
+                                <action selector="btnFetch:" destination="BYZ-38-t0r" id="ZG2-od-gHJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
